@@ -1,18 +1,14 @@
 {
-  "parserOptions": {
-    "sourceType": "module"
-  },
-  "env": {
-    "es2020": true,
-    "node": true
-  },
+  "parser": "@typescript-eslint/parser",
   "extends": [
     "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
     "plugin:import/errors",
     "plugin:import/warnings",
+    "plugin:import/typescript",
     "plugin:prettier/recommended"
   ],
-  "plugins": ["prettier", "import"],
+  "plugins": ["@typescript-eslint", "prettier", "import"],
   "rules": {
     "prettier/prettier": ["error", { "singleQuote": true }],
     "import/order": ["error", {
