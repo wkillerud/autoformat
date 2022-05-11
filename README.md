@@ -187,16 +187,11 @@ To run the style enforcement on any committed code, install [husky](https://gith
 $ npm install husky lint-staged
 ```
 
-You configure `husky` and `lint-staged` in `package.json`. Add this below your dependencies:
+You configure `lint-staged` in `package.json`. Add this below your dependencies:
 
 ```
 {
   ...
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
     "src/**/*.{js,mjs}": [
       "eslint --fix"
@@ -206,6 +201,26 @@ You configure `husky` and `lint-staged` in `package.json`. Add this below your d
     ]
   }
 }
+```
+
+In addition, run this command:
+
+```
+npm set-script lint-staged "lint-staged"
+```
+
+Husky is prepared in a few steps. First, create and run an NPM script `prepare` like this:
+
+```
+npm set-script prepare "husky install"
+npm run prepare
+```
+
+Then, create a pre-commit hook like this:
+
+```
+npx husky add .husky/pre-commit "npm run lint-staged"
+git add .husky/pre-commit
 ```
 
 Try making the changes you did earlier for Prettier and ESLint, but don't run the commands manually. Instead, add and commit the files to see what happens. `husky` will run `lint-staged` which in turn runs `eslint` and `prettier`, then adds any changes to the commit. Cool!
