@@ -121,7 +121,6 @@ Next, install and configure [ESLint](http://eslint.org). Since ESLint and Pretti
 ```sh
 $ npm install eslint \
   eslint-config-prettier \
-  eslint-config-import \
   eslint-plugin-prettier \
   eslint-plugin-import
 ```
